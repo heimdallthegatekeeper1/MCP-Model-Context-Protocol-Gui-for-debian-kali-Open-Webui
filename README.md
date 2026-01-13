@@ -101,3 +101,82 @@ This project is licensed under the MIT License.
 
 ### Pro-Tip for 2026 GitHub Submissions
 If you want your server to be discoverable in the global **MCP Registry**,
+
+
+When you restart your PC, the servers will not run automatically. You will need to execute specific commands in your terminal to start them up each time you want your LLM to use the tools
+. 
+Summary of Setup Steps (for a fresh start)
+These instructions assume you are using Kali Linux and have your work saved in ~/mcp-server/server.py.
+1. Preparation (Run Once)
+If this is your first time setting up the PC, install uv (our package manager) and move into your project folder:
+bash
+
+# Install the uv package manager
+curl -LsSf astral.sh | sh
+source $HOME/.local/bin/env
+
+# Navigate to your project folder
+cd ~/mcp-server
+
+Use code with caution.
+2. Daily Startup (Run Every Time You Restart)
+Every time you want to use your MCP tools, follow these steps:
+Terminal 1:
+bash
+
+# Activate your virtual environment
+cd ~/mcp-server
+source .venv/bin/activate
+
+# Start the FastMCP server and keep this terminal open
+fastmcp dev server.py
+
+Use code with caution.
+Terminal 2 (Open a new terminal tab/window):
+bash
+
+# Activate the same virtual environment in the second terminal
+cd ~/mcp-server
+source .venv/bin/activate
+
+# Install the proxy if needed (only once in this specific environment)
+uv pip install mcpo
+
+# Start the MCP-to-OpenAPI proxy and keep this terminal open
+mcpo --port 8000 -- python server.py
+
+Use code with caution.
+3. Open WebUI Connection (Run Once)
+In Open WebUI's Admin Settings → External Tools:
+
+    Type: OpenAPI
+    URL: http://localhost:8000
+
+4. Firewall Considerations
+Since you are using localhost (loopback address), typical firewalls won't block the connection between Open WebUI and your server on the same machine. However, if you were to use a service like ngrok to make your server public, you might need to adjust firewall settings for incoming public traffic. 
+Conclusion: Do I need a GUI?
+No, you do not need to construct a GUI for normal users to interact with the server or manage it day-to-day.
+
+    Open WebUI is already the robust graphical interface that allows users to interact with the LLMs and manage tool selection in a user-friendly way.
+    The setup you currently have, using terminal commands for the backend servers, is the standard and necessary way to run these services locally. 
+
+The process you just completed is the standard administrator setup for self-hosting AI tools.
+
+
+
+
+
+Prerequisites
+You need to ensure you have the tkinter library installed, which usually comes with Python, and that the mcpo and fastmcp packages are installed in your virtual environment:
+bash
+
+# Ensure tkinter is available (common on Linux)
+sudo apt update && sudo apt install python3-tk
+
+# Ensure packages are installed in your .venv
+cd ~/mcp-server
+source .venv/bin/activate
+uv pip install fastmcp mcpo
+
+Use code with caution.
+
