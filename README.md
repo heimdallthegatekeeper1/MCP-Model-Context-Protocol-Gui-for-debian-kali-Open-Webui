@@ -1,3 +1,11 @@
+So there are 3 parts in this thang...
+
+The main readme - making a gui manager (not needed but nifty in case it gets hacked you can shut it down)
+
+and
+
+Making the gui manager portable for the desktop (this all works in gnome in case I forgot to mention).
+
 A professional README for your GitHub repository is essential to help other developers (and your future self) understand, install, and use your project
 . In 2026, the standard for AI tool documentation is to provide clear, step-by-step setup instructions specifically for integrations like Open WebUI. 
 Below is a complete README.md template tailored for your FastMCP Server Manager project.
@@ -180,3 +188,36 @@ uv pip install fastmcp mcpo
 
 Use code with caution.
 
+
+Make portable for destop
+
+
+Here are the specific instructions to add to your README.md file under the "Getting Started" section for users who want to run the portable executable:
+🚀 Getting Started (Portable Executable)
+If you prefer a single, portable executable file instead of managing virtual environments, follow these steps:
+1. Build the Executable (Kali Linux)
+Navigate to your project directory and use pyinstaller to create a single file. Ensure you have activated your virtual environment first:
+bash
+
+cd ~/mcp-server
+source .venv/bin/activate
+# Install pyinstaller if needed: uv pip install pyinstaller
+pyinstaller --onefile --windowed mcp_gui.py
+
+Use code with caution.
+The portable file named mcp_gui will be created inside the newly generated dist folder (~/mcp-server/dist/mcp_gui).
+2. Run the Application
+You can now copy the mcp_gui file from the dist folder to your Desktop or anywhere else you prefer.
+To Launch on GNOME/XFCE Desktops (Graphical Method):
+
+    Open your file manager (Nautilus/Thunar) and navigate to the location of the mcp_gui file.
+    Right-click the file icon.
+    Select the "Run as a program" option (or simply "Run" if available).
+
+Alternatively, you can launch it via terminal from any location:
+bash
+
+/path/to/your/mcp_gui
+
+Use code with caution.
+Would you like to add a troubleshooting section to the README for users who might encounter firewall issues with ports 8000 or 6274?
