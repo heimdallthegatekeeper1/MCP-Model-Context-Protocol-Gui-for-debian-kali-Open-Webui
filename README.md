@@ -6,18 +6,6 @@ and
 
 Making the gui manager portable for the desktop (this all works in gnome in case I forgot to mention).
 
-A professional README for your GitHub repository is essential to help other developers (and your future self) understand, install, and use your project
-. In 2026, the standard for AI tool documentation is to provide clear, step-by-step setup instructions specifically for integrations like Open WebUI. 
-Below is a complete README.md template tailored for your FastMCP Server Manager project.
-1. Create the README File
-In your terminal, create the file:
-bash
-
-nano ~/mcp-server/README.md
-
-Use code with caution.
-2. Copy and Paste this Content
-markdown
 
 # 🚀 FastMCP Server Manager (2026)
 
